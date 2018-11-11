@@ -6,14 +6,12 @@ import java.util.Objects;
 public class PersonData implements Comparable, Serializable, Cloneable {
     private String name;
     private String surname;
-    private String age;
     private String phoneNumber;
     private String email;
 
-    public PersonData(String name, String surname, String age, String phoneNumber, String email) {
+    public PersonData(String name, String surname, String phoneNumber, String email) {
         this.name = name;
         this.surname = surname;
-        this.age = age;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
@@ -30,14 +28,13 @@ public class PersonData implements Comparable, Serializable, Cloneable {
         PersonData that = (PersonData) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
-                Objects.equals(age, that.age) &&
                 Objects.equals(phoneNumber, that.phoneNumber) &&
                 Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, age, phoneNumber, email);
+        return Objects.hash(name, surname, phoneNumber, email);
     }
 
     @Override
@@ -45,7 +42,6 @@ public class PersonData implements Comparable, Serializable, Cloneable {
         return "PersonData{" +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", age='" + age + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
@@ -67,14 +63,6 @@ public class PersonData implements Comparable, Serializable, Cloneable {
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
     }
 
     public String getPhoneNumber() {
