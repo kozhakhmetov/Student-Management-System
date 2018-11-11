@@ -1,4 +1,4 @@
-package Users;
+package AdditionalClasses;
 
 import java.io.Serializable;
 import java.util.Objects;

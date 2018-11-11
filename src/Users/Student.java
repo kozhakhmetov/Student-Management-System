@@ -1,8 +1,7 @@
 package Users;
 
+import AdditionalClasses.PersonData;
 import Enums.Degree;
-
-import java.io.Serializable;
 
 public class Student extends User {
     private int studentID;
