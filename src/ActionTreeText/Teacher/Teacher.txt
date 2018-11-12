@@ -1,0 +1,7 @@
+1.Add course
+2.View courses 
+3.Edit course (CourseFile add/delete)
+4.Put marks
+5.Send order to IT support guy
+6.View messageses from ORManager
+0.Logout
