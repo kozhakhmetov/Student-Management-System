@@ -1,12 +1,23 @@
 package Users;
 
+import AdditionalClasses.PersonData;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
 abstract public class User implements Comparable, Serializable, Cloneable {
+
     private String login;
     private String password;
+    private PersonData data;
+
+    public User(String name, String surname, String phoneNumber, String email, String login, String password) {
+        data = new PersonData(name,surname,phoneNumber,email);
+        this.login = login;
+        this.password = password;
+    }
+
     //private log TODO log
 
 
