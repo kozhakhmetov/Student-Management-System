@@ -10,10 +10,8 @@ abstract public class User implements Comparable, Serializable, Cloneable {
 
     private String login;
     private String password;
-    private PersonData data;
 
-    public User(String name, String surname, String phoneNumber, String email, String login, String password) {
-        data = new PersonData(name,surname,phoneNumber,email);
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }

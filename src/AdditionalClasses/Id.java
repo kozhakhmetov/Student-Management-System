@@ -3,6 +3,7 @@ package AdditionalClasses;
 public class Id {
     private int cnt_teacher,cnt_student,cnt_course,cnt_stuff;
     public void load_data() {
+
     }
     public String calc_student_id() {
         load_data();

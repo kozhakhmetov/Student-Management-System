@@ -12,7 +12,8 @@ public class Employee extends User {
     private int employeeID;
 
     public Employee(String name, String surname, String phoneNumber, String email, String login, String password, Title title, int salary) {
-        super(name,surname,phoneNumber,email,login,password);
+        super(login,password);
+        data = new PersonData(name, surname, phoneNumber, email);
         this.title = title;
         this.salary = salary;
     }
