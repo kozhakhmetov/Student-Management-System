@@ -8,9 +8,12 @@ public class NavigationTree {
     private File mainFile;
     private int index;
     private int length;
+    private String mainPath;
 
-    public NavigationTree(File mainFile) {
-        this.mainFile = mainFile;
+
+    public NavigationTree(String mainPath) {
+        this.mainPath = mainPath;
+        this.mainFile = new File(mainPath);
         this.length = getLengthWithoutHidden();
         this.index = 0;
     }
@@ -52,12 +55,17 @@ public class NavigationTree {
         }
     }
 
-    private static void clearScreen() {
-        try {
-            Runtime.getRuntime().exec("clear");
-        } catch (IOException e) {
-            e.printStackTrace();
+    public int execute() {
+        String first = mainFile.listFiles()[0].getName();
+        if (first.matches("\\d+")) {
+            getParent();
+            return Integer.parseInt(first);
         }
+        return -1;
+    }
+
+    private static void clearScreen() {
+        for(int i = 0; i < 100; ++i) System.out.println();
     }
     public void getDown() {
         int cnt = 0;
@@ -80,6 +88,7 @@ public class NavigationTree {
     }
 
     public void getParent() {
+        if (mainPath.equals(mainFile.getPath())) return;
         init(mainFile.getParentFile());
     }
 }

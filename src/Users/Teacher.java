@@ -1,18 +1,22 @@
 package Users;
 
+import Courses.Course;
 import Enums.Title;
 
+import java.util.List;
+
 public class Teacher extends Employee {
-    private String teacher_id;
+    private String teacherId;
+    private List<Course> courses;
     public Teacher(String name, String surname, String phoneNumber, String email, String login, String password, Title title, int salary) {
         super(name,surname,phoneNumber,email,login,password,title,salary);
     }
 
-    public String getTeacher_id() {
-        return teacher_id;
+    public String getTeacherId() {
+        return teacherId;
     }
 
-    public void setTeacher_id(String teacher_id) {
-        this.teacher_id = teacher_id;
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
     }
 }

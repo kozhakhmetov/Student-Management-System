@@ -36,4 +36,9 @@ public class Student extends User {
     public void setDegree(Degree degree) {
         this.degree = degree;
     }
+
+    @Override
+    public void execute() {
+
+    }
 }

@@ -9,15 +9,18 @@ import java.util.Objects;
 abstract public class User implements Comparable, Serializable, Cloneable {
 
     private String login;
-    private String password;
+    private String password;// TODO: change to hash
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    //private log TODO log
+    public boolean isPasswordValid(String s) {
+        return password.equals(s);
+    }
 
+    public abstract void execute();
 
 
     @Override
@@ -55,6 +58,10 @@ abstract public class User implements Comparable, Serializable, Cloneable {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public boolean isValid(String password) {
+        return this.password.equals(password);
     }
 
     public String getPassword() {
