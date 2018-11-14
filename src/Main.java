@@ -11,7 +11,7 @@ public class Main {
         Data.createAdmin();
         while (true) {
             User user = signIn();
-            Session.start();
+            Session.start(user);
         }
     }
 

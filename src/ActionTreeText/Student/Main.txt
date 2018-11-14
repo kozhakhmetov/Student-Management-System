@@ -1,6 +1,0 @@
-1.Register for a course
-2.View courses
-3.View file of course
-4.View information for specific course
-5.View marks for specific course
-6.View transcript

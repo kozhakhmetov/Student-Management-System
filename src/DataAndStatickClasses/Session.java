@@ -10,16 +10,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Session {
-    static String mainPath = "/Users/mac/Projects/Student-Management-System/src/ActionTreeText";
+    static final String mainPath = "/Users/mac/Projects/Student-Management-System/src/ActionTreeText";
 
-    static public void start() {
-        /*if (user instanceof Admin) mainPath += "/Admin";
-        if (user instanceof Teacher) mainPath += "/Teacher";
-        if (user instanceof ORManager) mainPath += "/ORManager";
-        if (user instanceof Student) mainPath += "/Student";
-        if (user instanceof TechSupport) mainPath += "TechSupportGuy";*/
+    static public void start(User user) {
+        String path = mainPath;
+        if (user instanceof Admin) path += "/Admin";
+        if (user instanceof Teacher) path += "/Teacher";
+        if (user instanceof ORManager) path += "/ORManager";
+        if (user instanceof Student) path += "/Student";
+        if (user instanceof TechSupport) path += "TechSupportGuy";
         Scanner sc = new Scanner(System.in);
-        NavigationTree navigationTree = new NavigationTree(mainPath);
+        NavigationTree navigationTree = new NavigationTree(path);
         navigationTree.print();
         while (true) {
             int key = read(sc);
@@ -29,8 +30,12 @@ public class Session {
             if (key == 3) navigationTree.getParent();
             if (key == 4) navigationTree.getDown();
             int executionValue = navigationTree.execute();
-            if (executionValue == 0) return;
+            System.out.print(executionValue);
+            if (executionValue == 0) {
+                return;
+            }
             if (executionValue != -1) {
+                navigationTree.getParent();
                 //user.execute(executionValue);
             }
 

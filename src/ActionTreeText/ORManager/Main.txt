@@ -1,5 +1,0 @@
-1.Add a course
-2.View info about students
-3.View info about teacher
-4.Send messages to teachers
-

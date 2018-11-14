@@ -1,4 +1,0 @@
-1.Add user
-2.Remove user
-3.Update info about the user
-4.See log files

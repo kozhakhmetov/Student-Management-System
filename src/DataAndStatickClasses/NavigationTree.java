@@ -56,9 +56,16 @@ public class NavigationTree {
     }
 
     public int execute() {
-        String first = mainFile.listFiles()[0].getName();
+        String first = null;
+        for(File fileEntry : mainFile.listFiles()) {
+            if (!fileEntry.isHidden()) {
+                first = fileEntry.getName();
+            }
+        }
+        if (first == null) {
+            return -1;
+        }
         if (first.matches("\\d+")) {
-            getParent();
             return Integer.parseInt(first);
         }
         return -1;
