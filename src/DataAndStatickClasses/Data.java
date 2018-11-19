@@ -62,6 +62,10 @@ public class Data {
         return (logins.get(login).isValid(password));
     }
 
+    public static boolean isSanjikKrasavchik() {
+        return true;
+    }
+
     public static void createAdmin() {
         logins.put("admin", new Admin("admin", "admin"));
     }
