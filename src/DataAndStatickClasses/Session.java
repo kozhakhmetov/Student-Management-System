@@ -18,7 +18,7 @@ public class Session {
         if (user instanceof Teacher) path += "/Teacher";
         if (user instanceof ORManager) path += "/ORManager";
         if (user instanceof Student) path += "/Student";
-        if (user instanceof TechSupport) path += "TechSupportGuy";
+        if (user instanceof TechSupport) path += "/TechSupportGuy";
         Scanner sc = new Scanner(System.in);
         NavigationTree navigationTree = new NavigationTree(path);
         navigationTree.print();

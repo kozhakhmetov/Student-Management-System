@@ -5,10 +5,10 @@ public class Admin extends User {
         super(login, password);
     }
 
-
-
     @Override
     public void execute() {
 
     }
+
+
 }
