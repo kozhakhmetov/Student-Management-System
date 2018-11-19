@@ -1,12 +1,11 @@
 package Users;
 
-import Enums.Title;
+import AdditionalClasses.PersonData;
 
 public class ORManager extends Employee {
-    private String id;
 
-    public ORManager(String name, String surname, String phoneNumber, String email, String login, String password, Title title, int salary) {
-        super(name,surname,phoneNumber,email,login,password,title,salary);
+    public ORManager(PersonData personData) {
+        super(personData);
     }
 
     @Override
@@ -23,13 +22,5 @@ public class ORManager extends Employee {
         if (value == 4) { // View info about a teacher
 
         }
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 }

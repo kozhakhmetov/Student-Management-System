@@ -1,21 +1,19 @@
 package Users;
 
+import AdditionalClasses.IO;
 import AdditionalClasses.PersonData;
-import Enums.Degree;
-import Enums.Title;
 
 public abstract class Employee extends User {
     private PersonData data;
-    private Title title;
+    static final String salaryValidation = "[0-9]+";
+    static final String salarNotValid = "Salar is not valid";
+    static final String enterSalary = "Enter salary";
 
     private int salary;
-    private int employeeID;
 
-    public Employee(String name, String surname, String phoneNumber, String email, String login, String password, Title title, int salary) {
-        super(login,password);
-        data = new PersonData(name, surname, phoneNumber, email);
-        this.title = title;
-        this.salary = salary;
+    public Employee(PersonData data) {
+        super();
+        this.data = data;
     }
 
     public PersonData getData() {
@@ -26,14 +24,6 @@ public abstract class Employee extends User {
         this.data = data;
     }
 
-    public Title getTitle() {
-        return title;
-    }
-
-    public void setTitle(Title title) {
-        this.title = title;
-    }
-
     public int getSalary() {
         return salary;
     }
@@ -42,12 +32,17 @@ public abstract class Employee extends User {
         this.salary = salary;
     }
 
-    public int getEmployeeID() {
-        return employeeID;
-    }
-
-    public void setEmployeeID(int employeeID) {
-        this.employeeID = employeeID;
+    public boolean setSalary() {
+        String salary = IO.read();
+        if (salary.equals("!")) return false;
+        while (!salary.matches(salaryValidation)) {
+            IO.print(salarNotValid);
+            IO.print(enterSalary);
+            salary = IO.read();
+            if (salary.equals("!")) return false;
+        }
+        this.salary = Integer.parseInt(salary);
+        return true;
     }
 
     public abstract void execute(int value);

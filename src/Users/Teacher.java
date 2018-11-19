@@ -1,16 +1,17 @@
 package Users;
 
-import Enums.Title;
+import AdditionalClasses.PersonData;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Teacher extends Employee {
     private List<String> courses;
-    private List<String> messages;
 
-    public Teacher(String name, String surname, String phoneNumber, String email, String login, String password, Title title, int salary) {
-        super(name,surname,phoneNumber,email,login,password,title,salary);
+    public Teacher(PersonData personData) {
+        super(personData);
+        courses = new ArrayList<String>();
     }
 
     @Override
@@ -32,19 +33,12 @@ public class Teacher extends Employee {
 
         }
         if (value == 5) { // View messages from ORManager
-            for(String message : messages) {
-                System.out.println(message);
-            }
-            messages.clear();
+
         }
         if (value == 6) { // Send order to IT support guy
             String order = scanner.nextLine();
             TechSupport.getOrders(order);
         }
-    }
-
-    public void sendMessage(String message) {
-        messages.add(message);
     }
 
 

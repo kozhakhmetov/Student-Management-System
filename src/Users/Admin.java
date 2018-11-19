@@ -1,10 +1,10 @@
 package Users;
 
+import AdditionalClasses.IO;
 import AdditionalClasses.PersonData;
 import DataAndStatickClasses.Data;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 public class Admin extends User {
     static private final String enterLogin = "Enter the login of user";
@@ -17,15 +17,14 @@ public class Admin extends User {
     }
 
     @Override
-    public void execute(int value) {
+    public void execute(int value) { // TODO change
         if (value == 1) { // Remove a user
-            Scanner scan = new Scanner(System.in);
-            String login = scan.nextLine();
+            String login = IO.read();
             if (login.equals("!")) return;
             while (!Data.doesUserExist(login)) {
                 System.out.println(wrongLogin);
                 System.out.println(enterLogin);
-                login = scan.nextLine();
+                login = IO.read();
                 if (login.equals("!")) return;
             }
             try {
@@ -48,10 +47,33 @@ public class Admin extends User {
             Data.addUser(newStudent);
         }
         if (value == 3) { // See log files
-
         }
         if (value == 4) { // Update info about a user
 
+        }
+        if (value == 10) { // Add a teacher
+            PersonData personData = new PersonData();
+            if (!personData.setName()) return;
+            if (!personData.setSurname()) return;
+            if (!personData.setEmail()) return;
+            if (!personData.setNumber()) return;
+            Teacher teacher = new Teacher(personData);
+            if (!teacher.setLogin()) return;
+            if (!teacher.setPassword()) return;
+            if (!teacher.setSalary()) return;
+            Data.addUser(teacher);
+        }
+        if (value == 11) { // Add OR Manager
+            PersonData personData = new PersonData();
+            if (!personData.setName()) return;
+            if (!personData.setSurname()) return;
+            if (!personData.setEmail()) return;
+            if (!personData.setNumber()) return;
+            ORManager orManager = new ORManager(personData);
+            if (!orManager.setLogin()) return;
+            if (!orManager.setPassword()) return;
+            if (!orManager.setSalary()) return;
+            Data.addUser(orManager);
         }
     }
 
