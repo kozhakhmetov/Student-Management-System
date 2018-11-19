@@ -5,6 +5,7 @@ import Enums.Degree;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Scanner;
 
 public class Student extends User {
 
@@ -39,20 +40,25 @@ public class Student extends User {
 
     @Override
     public void execute(int value) {
+        Scanner scanner = new Scanner(System.in);
         if (value == 1) { // View courses
-
+            for(String curCourse : courses) {
+                System.out.println(curCourse);
+            }
         }
         if (value == 2) { // View transcript
-
+            // take information from Course, waiting for Adilkhan
         }
         if (value == 3) { // Register for a course
-
+            String courseid = scanner.nextLine();
+            courses.add(courseid);
         }
         if (value == 4) { // View marks for a specific course
+            // take information from Course, waiting for Adilkhan
 
         }
         if (value == 5) { // View file of course
-
+            // take information from Course, waiting for Adilkhan
         }
 
 

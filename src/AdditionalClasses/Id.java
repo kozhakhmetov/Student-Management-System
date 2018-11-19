@@ -1,29 +1,29 @@
 package AdditionalClasses;
 
 public class Id {
-    private int cnt_teacher,cnt_student,cnt_course,cnt_stuff;
+    private int cnt_teacher, cnt_student,cnt_course,cnt_stuff;
     public void load_data() {
 
     }
-    public String calc_student_id() {
+    public String calcStudentId() {
         load_data();
         String res = "";
         res += "STUDENT" + (++ cnt_student);
         return res;
     }
-    public String calc_teacher_id() {
+    public String calcTeacherId() {
         load_data();
         String res = "";
         res += "TEACHER" + (++ cnt_teacher);
         return res;
     }
-    public String calc_course_id() {
+    public String calcCourseId() {
         load_data();
         String res = "";
         res += "COURSE" + (++ cnt_course);
         return res;
     }
-    public String calc_stuff_id() {
+    public String calcStuffId() {
         load_data();
         String res = "";
         res += "STUFF" + (++ cnt_stuff);

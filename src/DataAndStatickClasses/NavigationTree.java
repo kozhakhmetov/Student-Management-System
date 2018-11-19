@@ -28,7 +28,7 @@ public class NavigationTree {
         System.out.println(String.format("\033[33m%s\033", string));
     }
     static void printGreen(String string) {
-        System.out.println(String.format("\033[ad32;1;2m%s\033", string));
+        System.out.println(String.format("\033[32;1;2m%s\033", string));
     }
 
     public void incIndex() {
