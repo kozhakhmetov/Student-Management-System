@@ -1,13 +1,12 @@
 package DataAndStatickClasses;
 
-import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-
-
 import Courses.Course;
 import Users.Admin;
+import Users.TechSupport;
 import Users.User;
+
+import java.io.*;
+import java.util.HashMap;
 
 public class Data implements Serializable{
     static private HashMap<String, User> logins = new HashMap<String, User>(); // key: login value: User
@@ -66,7 +65,7 @@ public class Data implements Serializable{
         return logins.get(login);
     }
 
-    public static void deleteUser(String login) throws IOException, ClassNotFoundException { // remove User by login TODO try catch
+    public static void deleteUser(String login) throws IOException, ClassNotFoundException { // remove User by login
         logins.remove(login);
         saveData();
     }
@@ -75,17 +74,29 @@ public class Data implements Serializable{
         return courses.get(name);
     }
 
-    public static void deleteCourse(String name) throws IOException, ClassNotFoundException { // remove course by name TODO try catch
+    public static void deleteCourse(String name) throws IOException, ClassNotFoundException { // remove course by name
         courses.remove(name);
         saveData();
     }
 
-    public static boolean isValid(String login, String password) { // login password validation TODO hash
+    public static boolean isValid(String login, String password) { // login password validation
         if (!logins.containsKey(login)) return false;
         return (logins.get(login).isValid(password));
     }
 
     public static void createAdmin() {  // Add admin
         logins.put("admin", new Admin("admin", "admin"));
+    }
+    public static void createTechSupport() {
+        logins.put("techsupport", new TechSupport("techsupport", "techsupport"));
+    }
+
+    public static void addUser(User user) {
+        logins.put(user.getLogin(), user);
+        try {
+            saveData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

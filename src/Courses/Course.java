@@ -12,6 +12,7 @@ public class Course implements Cloneable, Comparable, Serializable {
     List<Student> students;
     Teacher teacher;
     String courseId;
+    int numberOfCredits;
     @Override
     public int compareTo(Object o) {
         return 0; // TODO

@@ -1,7 +1,6 @@
 import DataAndStatickClasses.Data;
-import DataAndStatickClasses.Session;
-
 import Users.User;
+import DataAndStatickClasses.Session;
 
 import java.io.IOException;
 import java.util.Scanner;

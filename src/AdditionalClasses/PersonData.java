@@ -23,6 +23,10 @@ public class PersonData implements Comparable, Serializable, Cloneable {
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
 
+    public PersonData() {
+
+    }
+
     public PersonData(String name, String surname, String phoneNumber, String email) {
         this.name = name;
         this.surname = surname;

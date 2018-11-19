@@ -1,19 +1,26 @@
 package Users;
 
-import AdditionalClasses.PersonData;
+import AdditionalClasses.IO;
+import DataAndStatickClasses.Data;
 
 import java.io.Serializable;
-import java.util.List;
 import java.util.Objects;
 
 abstract public class User implements Comparable, Serializable, Cloneable {
 
+    private static String loginExist = "Such login already exits";
+    private static String enterLogin = "Enter login";
+    private static String enterPassword = "Enter password";
     private String login;
     private String password;// TODO: change to hash
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public User() {
+
     }
 
     public boolean isPasswordValid(String s) {
@@ -72,4 +79,26 @@ abstract public class User implements Comparable, Serializable, Cloneable {
         this.password = password;
     }
 
+
+    public boolean setLogin() {
+        IO.print(enterLogin);
+        String login = IO.read();
+        if (login.equals("!")) return false;
+        while (Data.doesUserExist(login)) {
+            IO.print(loginExist);
+            IO.print(enterLogin);
+            login = IO.read();
+            if (login.equals("!")) return false;
+        }
+        this.login = login;
+        return true;
+    }
+
+    public boolean setPassword() {
+        IO.print(enterPassword);
+        String password = IO.read();
+        if (password.equals("!")) return false;
+        this.password = password;
+        return true;
+    }
 }

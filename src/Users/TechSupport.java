@@ -1,15 +1,13 @@
 package Users;
 
-import Enums.Title;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TechSupport extends Employee {
+public class TechSupport extends User {
     public static List<String> orders = new ArrayList<String>();
-    public TechSupport(String name, String surname, String phoneNumber, String email, String login, String password, Title title, int salary) {
-        super(name, surname, phoneNumber, email, login, password, title, salary);
+    public TechSupport(String login, String password) {
+        super(login, password);
     }
 
     @Override

@@ -1,13 +1,11 @@
 package Users;
 
-import Courses.Course;
 import Enums.Title;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class Teacher extends Employee {
-    private String teacherId;
     private List<String> courses;
     private List<String> messages;
 
@@ -49,11 +47,5 @@ public class Teacher extends Employee {
         messages.add(message);
     }
 
-    public String getTeacherId() {
-        return teacherId;
-    }
 
-    public void setTeacherId(String teacherId) {
-        this.teacherId = teacherId;
-    }
 }
