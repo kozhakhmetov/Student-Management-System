@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Session {
-    static final String mainPath = "/Users/mac/Projects/Student-Management-System/src/ActionTreeText";
+    static final String mainPath = "/Users/mac/Projects/Student-Management-System/src/ActionTreeText"; // TODO change path
 
     static public void start(User user) {
         String path = mainPath;

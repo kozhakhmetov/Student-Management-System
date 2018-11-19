@@ -38,7 +38,23 @@ public class Student extends User {
     }
 
     @Override
-    public void execute() {
+    public void execute(int value) {
+        if (value == 1) { // View courses
+
+        }
+        if (value == 2) { // View transcript
+
+        }
+        if (value == 3) { // Register for a course
+
+        }
+        if (value == 4) { // View marks for a specific course
+
+        }
+        if (value == 5) { // View file of course
+
+        }
+
 
     }
 }

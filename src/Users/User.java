@@ -20,7 +20,7 @@ abstract public class User implements Comparable, Serializable, Cloneable {
         return password.equals(s);
     }
 
-    public abstract void execute();
+    public abstract void execute(int value);
 
 
     @Override
@@ -71,4 +71,5 @@ abstract public class User implements Comparable, Serializable, Cloneable {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

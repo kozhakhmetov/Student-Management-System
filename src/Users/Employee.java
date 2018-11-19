@@ -4,7 +4,7 @@ import AdditionalClasses.PersonData;
 import Enums.Degree;
 import Enums.Title;
 
-public class Employee extends User {
+public abstract class Employee extends User {
     private PersonData data;
     private Title title;
 
@@ -50,8 +50,5 @@ public class Employee extends User {
         this.employeeID = employeeID;
     }
 
-    @Override
-    public void execute() {
-
-    }
+    public abstract void execute(int value);
 }

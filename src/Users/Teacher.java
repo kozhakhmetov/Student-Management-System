@@ -12,6 +12,28 @@ public class Teacher extends Employee {
         super(name,surname,phoneNumber,email,login,password,title,salary);
     }
 
+    @Override
+    public void execute(int value) {
+        if (value == 1) { // Add a course
+
+        }
+        if (value == 2) { // View courses
+
+        }
+        if (value == 3) { // Edit courseFile
+
+        }
+        if (value == 4) { // Put marks
+
+        }
+        if (value == 5) { // View messages from ORManager
+
+        }
+        if (value == 6) { // Send order to IT support guy
+
+        }
+    }
+
     public String getTeacherId() {
         return teacherId;
     }
