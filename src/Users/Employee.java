@@ -9,7 +9,7 @@ public abstract class Employee extends User {
     static final String salarNotValid = "Salar is not valid";
     static final String enterSalary = "Enter salary";
 
-    private int salary;
+    int salary;
 
     public Employee(PersonData data) {
         super();

@@ -33,6 +33,29 @@ public class Student extends User {
         this.degree = degree;
     }
 
+    public PersonData getPersonData() {
+        return personData;
+    }
+
+    public void setPersonData(PersonData personData) {
+        this.personData = personData;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    public List<String> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<String> courses) {
+        this.courses = courses;
+    }
 
     @Override
     public void execute(int value) {

@@ -12,6 +12,7 @@ public class Data implements Serializable{
     static private HashMap<String, User> logins = new HashMap<String, User>(); // key: login value: User
     static private HashMap<String, Course> courses = new HashMap<String, Course>(); // key: name of the course value: Course
 
+
     public static void saveData() throws IOException { // Serialization data
 
         FileOutputStream fs = new FileOutputStream("users.ser");

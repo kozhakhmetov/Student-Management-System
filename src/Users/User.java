@@ -2,8 +2,11 @@ package Users;
 
 import AdditionalClasses.IO;
 import DataAndStatickClasses.Data;
+import DataAndStatickClasses.Log;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 abstract public class User implements Comparable, Serializable, Cloneable {
@@ -11,16 +14,23 @@ abstract public class User implements Comparable, Serializable, Cloneable {
     private static String loginExist = "Such login already exits";
     private static String enterLogin = "Enter login";
     private static String enterPassword = "Enter password";
-    private String login;
-    private String password;// TODO: change to hash
+    String login;
+    String password;
+    List<Log> log;
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
     }
 
-    public User() {
+    public void showLog() {
+       for(Log log : this.log) {
+           IO.print(log.toString());
+       }
+    }
 
+    public User() {
+        log = new ArrayList<Log>();
     }
 
     public boolean isPasswordValid(String s) {
