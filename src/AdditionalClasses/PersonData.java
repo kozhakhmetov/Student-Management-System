@@ -2,12 +2,26 @@ package AdditionalClasses;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class PersonData implements Comparable, Serializable, Cloneable {
     private String name;
     private String surname;
     private String phoneNumber;
     private String email;
+    private static final String nameValidation = "Name is not valid";
+    private static final String enterName = "Enter the name";
+    private static final String surnameValidation = "Surname is not valid";
+    private static final String enterSurname = "Enter the surname";
+    private static final String emailValidation = "Email is not valid";
+    private static final String enterEmail = "Enter the email";
+    private static final String phoneNumberValidation = "phoneNumber is not valid";
+    private static final String enterPhoneNumber = "Enter the phone number";
+    private static final String phonePattern = "\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}";
+
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
 
     public PersonData(String name, String surname, String phoneNumber, String email) {
         this.name = name;
@@ -80,4 +94,60 @@ public class PersonData implements Comparable, Serializable, Cloneable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public boolean setName() {
+        IO.print(enterName);
+        String name = IO.read();
+        if (name.equals("!")) return false;
+        while (!name.matches("[a-zA-Z]+")) {
+            IO.print(nameValidation);
+            IO.print(enterName);
+            name = IO.read();
+            if (name.equals("!")) return false;
+        }
+        this.name = name;
+        return true;
+    }
+
+    public boolean setSurname() {
+        IO.print(enterSurname);
+        String surname = IO.read();
+        if (surname.equals("!")) return false;
+        while (!surname.matches("[a-zA-Z]+")) {
+            IO.print(surnameValidation);
+            IO.print(enterSurname);
+            surname = IO.read();
+            if (surname.equals("!")) return false;
+        }
+        this.surname = surname;
+        return true;
+    }
+
+    public boolean setEmail() {
+        IO.print(enterEmail);
+        String email = IO.read();
+        if (email.equals("!")) return false;
+        while (!VALID_EMAIL_ADDRESS_REGEX .matcher(email).find()) {
+            IO.print(emailValidation);
+            IO.print(enterEmail);
+            email = IO.read();
+            if (email.equals("!")) return false;
+        }
+        return true;
+    }
+
+    public boolean setNumber() {
+        IO.print(enterPhoneNumber);
+        String number = IO.read();
+        if (number.equals("!")) return false;
+        while (!number.matches(phonePattern)) {
+            IO.print(phoneNumberValidation);
+            IO.print(enterPhoneNumber);
+            number = IO.read();
+            if (number.equals("!")) return false;
+        }
+        return true;
+    }
+
+
 }
