@@ -37,7 +37,7 @@ public class PersonData implements Comparable, Serializable, Cloneable {
 
     @Override
     public int compareTo(Object o) {
-        return 0; // TODO
+        return 0;
     }
 
     @Override

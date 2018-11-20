@@ -1,6 +1,7 @@
 package AdditionalClasses;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Order implements Cloneable, Serializable, Comparable {
     private boolean done;
@@ -29,6 +30,32 @@ public class Order implements Cloneable, Serializable, Comparable {
 
     @Override
     public int compareTo(Object o) {
-        return 0; // TODO
+        return 0;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return done == order.done &&
+                Objects.equals(orderName, order.orderName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(done, orderName);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "done=" + done +
+                ", orderName='" + orderName + '\'' +
+                '}';
+    }
+
+
+
+
 }

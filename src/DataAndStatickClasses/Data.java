@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class Data implements Serializable{
+public class Data implements Serializable, Cloneable {
 
     static private HashMap<String, User> logins = new HashMap<String, User>(); // key: login value: User
     static private HashMap<String, Course> courses = new HashMap<String, Course>(); // key: name of the course value: Course
@@ -119,4 +119,32 @@ public class Data implements Serializable{
             IO.print(message);
         }
     }
+
+    public static HashMap<String, User> getLogins() {
+        return logins;
+    }
+
+    public static void setLogins(HashMap<String, User> logins) {
+        Data.logins = logins;
+    }
+
+    public static HashMap<String, Course> getCourses() {
+        return courses;
+    }
+
+    public static void setCourses(HashMap<String, Course> courses) {
+        Data.courses = courses;
+    }
+
+    public static List<String> getMessagesToTeachers() {
+        return messagesToTeachers;
+    }
+
+    public static void setMessagesToTeachers(List<String> messagesToTeachers) {
+        Data.messagesToTeachers = messagesToTeachers;
+    }
+
+
+
+
 }

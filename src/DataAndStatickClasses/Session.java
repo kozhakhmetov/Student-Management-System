@@ -2,14 +2,11 @@ package DataAndStatickClasses;
 
 
 import Users.*;
-import javafx.scene.input.KeyCode;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Session {
+public class Session implements Serializable, Cloneable, Comparable {
     static final String mainPath = "/Users/mac/Projects/Student-Management-System/src/ActionTreeText"; // TODO change path
 
     static public void start(User user) {
@@ -59,5 +56,12 @@ public class Session {
         return 0;
     }
 
+    public static String getMainPath() {
+        return mainPath;
+    }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
 }

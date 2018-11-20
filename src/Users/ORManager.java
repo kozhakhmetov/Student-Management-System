@@ -45,11 +45,15 @@ public class ORManager extends Employee {
         }
         if (value == 4) { // View info about a teacher
             IO.print(enterLogin);
+            IO.print(end);
             String login = IO.read();
+            if (login.equals("!")) return;
             while(!Data.doesUserExist(login)) {
                 IO.print(enterLogin);
                 IO.print(wrongLogin);
+                IO.print(end);
                 login = IO.read();
+                if (login.equals("!")) return;
             }
             User user = Data.getUser(login);
             if(!(user instanceof Teacher)) {

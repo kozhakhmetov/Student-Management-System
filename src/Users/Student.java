@@ -79,12 +79,8 @@ public class Student extends User {
         if (value == 2) { // View transcript
             // take information from Course, waiting for Adilkhan
         }
-        if (value == 3) { // Register for a course
-            String courseid = scanner.nextLine();
-            courses.add(courseid);
-        }
-        if (value == 4) { // View marks for a specific course
-            // take information from Course, waiting for Adilkhan
+        if (value == 3) {
+
         }
         if (value == 5) { // View file of course
             // take information from Course, waiting for Adilkhan

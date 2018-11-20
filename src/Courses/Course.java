@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Course implements Cloneable, Comparable, Serializable {
 
@@ -30,7 +31,7 @@ public class Course implements Cloneable, Comparable, Serializable {
         this.courseId = courseId;
         this.numberOfCredits = numberOfCredits;
 
-        for(int i = 0;i < students.size();i ++) {
+        for(int i = 0; i < students.size();i ++) {
 
         }
     }
@@ -99,4 +100,36 @@ public class Course implements Cloneable, Comparable, Serializable {
     public int compareTo(Object o) {
         return 0; // TODO
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return numberOfCredits == course.numberOfCredits &&
+                Objects.equals(courseFile, course.courseFile) &&
+                Objects.equals(students, course.students) &&
+                Objects.equals(teacher, course.teacher) &&
+                Objects.equals(courseId, course.courseId) &&
+                Objects.equals(marks, course.marks);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseFile, students, teacher, courseId, numberOfCredits, marks);
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseFile=" + courseFile +
+                ", students=" + students +
+                ", teacher=" + teacher +
+                ", courseId='" + courseId + '\'' +
+                ", numberOfCredits=" + numberOfCredits +
+                ", marks=" + marks +
+                '}';
+    }
+
+
 }
