@@ -17,9 +17,11 @@ public class Mark implements Serializable, Cloneable, Comparable {
         this.course_name = course_name;
     }
 
-    public void setMark() {
+    public void setMark(Integer mark_) {
         Transcript transcript = student.getTranscript();
-        HashMap<String,>
+        HashMap<String,Integer> hs = transcript.getMarks();
+        hs.put(course_name,(Integer)mark_);
+        transcript.setMarks(hs);
     }
 
     @Override
