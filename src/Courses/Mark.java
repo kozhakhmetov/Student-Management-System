@@ -3,30 +3,23 @@ package Courses;
 import Users.Student;
 
 import java.io.Serializable;
+import java.util.HashMap;
 
 public class Mark implements Serializable, Cloneable, Comparable {
+
+    String course_name;
     Student student;
-    char mark;
+    int mark;
 
-    public Mark(Student student, char mark) {
+    public Mark(Student student, int mark, String course_name) {
         this.student = student;
         this.mark = mark;
+        this.course_name = course_name;
     }
 
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public char getMark() {
-        return mark;
-    }
-
-    public void setMark(char mark) {
-        this.mark = mark;
+    public void setMark() {
+        Transcript transcript = student.getTranscript();
+        HashMap<String,>
     }
 
     @Override

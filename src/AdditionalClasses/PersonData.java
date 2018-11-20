@@ -13,6 +13,7 @@ public class PersonData implements Comparable, Serializable, Cloneable {
     private static final String enterName = "Enter the name";
     private static final String surnameValidation = "Surname is not valid";
     private static final String enterSurname = "Enter the surname";
+    private static final String end = "Enter ! to cancel";
     private static final String emailValidation = "Email is not valid";
     private static final String enterEmail = "Enter the email";
     private static final String phoneNumberValidation = "phoneNumber is not valid";
@@ -101,11 +102,13 @@ public class PersonData implements Comparable, Serializable, Cloneable {
 
     public boolean setName() {
         IO.print(enterName);
+        IO.print(end);
         String name = IO.read();
         if (name.equals("!")) return false;
         while (!name.matches("[a-zA-Z]+")) {
             IO.print(nameValidation);
             IO.print(enterName);
+            IO.print(end);
             name = IO.read();
             if (name.equals("!")) return false;
         }
@@ -115,9 +118,11 @@ public class PersonData implements Comparable, Serializable, Cloneable {
 
     public boolean setSurname() {
         IO.print(enterSurname);
+        IO.print(end);
         String surname = IO.read();
         if (surname.equals("!")) return false;
         while (!surname.matches("[a-zA-Z]+")) {
+            IO.print(end);
             IO.print(surnameValidation);
             IO.print(enterSurname);
             surname = IO.read();
@@ -129,11 +134,13 @@ public class PersonData implements Comparable, Serializable, Cloneable {
 
     public boolean setEmail() {
         IO.print(enterEmail);
+        IO.print(end);
         String email = IO.read();
         if (email.equals("!")) return false;
         while (!VALID_EMAIL_ADDRESS_REGEX .matcher(email).find()) {
             IO.print(emailValidation);
             IO.print(enterEmail);
+            IO.print(end);
             email = IO.read();
             if (email.equals("!")) return false;
         }
@@ -142,16 +149,17 @@ public class PersonData implements Comparable, Serializable, Cloneable {
 
     public boolean setNumber() {
         IO.print(enterPhoneNumber);
+        IO.print(end);
         String number = IO.read();
         if (number.equals("!")) return false;
         while (!number.matches(phonePattern)) {
             IO.print(phoneNumberValidation);
             IO.print(enterPhoneNumber);
+            IO.print(end);
             number = IO.read();
             if (number.equals("!")) return false;
         }
         return true;
     }
-
 
 }

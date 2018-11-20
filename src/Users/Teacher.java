@@ -1,6 +1,7 @@
 package Users;
 
 import AdditionalClasses.PersonData;
+import DataAndStatickClasses.Data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,13 +34,11 @@ public class Teacher extends Employee {
 
         }
         if (value == 5) { // View messages from ORManager
-
+            Data.printMessageForTeacher();
         }
         if (value == 6) { // Send order to IT support guy
             String order = scanner.nextLine();
             TechSupport.getOrders(order);
         }
     }
-
-
 }

@@ -1,6 +1,7 @@
 package Users;
 
 import AdditionalClasses.PersonData;
+import Courses.Transcript;
 import Enums.Degree;
 
 import java.util.ArrayList;
@@ -10,6 +11,16 @@ import java.util.Scanner;
 public class Student extends User {
 
     private Degree degree;
+
+    public Transcript getTranscript() {
+        return transcript;
+    }
+
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
+    }
+
+    private Transcript transcript;
     private PersonData personData;
     private double gpa;
     private List<String> courses;
@@ -74,12 +85,9 @@ public class Student extends User {
         }
         if (value == 4) { // View marks for a specific course
             // take information from Course, waiting for Adilkhan
-
         }
         if (value == 5) { // View file of course
             // take information from Course, waiting for Adilkhan
         }
-
-
     }
 }

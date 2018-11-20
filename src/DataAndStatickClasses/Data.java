@@ -1,17 +1,21 @@
 package DataAndStatickClasses;
 
+import AdditionalClasses.IO;
 import Courses.Course;
 import Users.Admin;
 import Users.TechSupport;
 import Users.User;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Data implements Serializable{
+
     static private HashMap<String, User> logins = new HashMap<String, User>(); // key: login value: User
     static private HashMap<String, Course> courses = new HashMap<String, Course>(); // key: name of the course value: Course
-
+    static private List<String> messagesToTeachers = new ArrayList<String>();
 
     public static void saveData() throws IOException { // Serialization data
 
@@ -98,6 +102,21 @@ public class Data implements Serializable{
             saveData();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void addMessagForTeacher(String s) {
+        messagesToTeachers.add(s);
+        try {
+            saveData();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void printMessageForTeacher() {
+        for(String message : messagesToTeachers) {
+            IO.print(message);
         }
     }
 }
