@@ -38,7 +38,8 @@ public class Admin extends User {
             }
             this.log.add(new Log("Removed a user"));
         }
-        if (value == 2) { // Add a Student
+        if (value == 2) {
+            // Add a Student
             PersonData personData = new PersonData();
             if (!personData.setName()) return;
             if (!personData.setSurname()) return;

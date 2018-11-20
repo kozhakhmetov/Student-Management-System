@@ -16,11 +16,12 @@ abstract public class User implements Comparable, Serializable, Cloneable {
     private static String enterPassword = "Enter password";
     String login;
     String password;
-    List<Log> log;
+    public List<Log> log = new ArrayList<Log>();
 
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+        log = new ArrayList<Log>();
     }
 
     public void showLog() {

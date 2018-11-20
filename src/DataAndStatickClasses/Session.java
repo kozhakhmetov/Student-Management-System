@@ -27,13 +27,12 @@ public class Session implements Serializable, Cloneable, Comparable {
             if (key == 3) navigationTree.getParent();
             if (key == 4) navigationTree.getDown();
             int executionValue = navigationTree.execute();
-            System.out.print(executionValue);
             if (executionValue == 0) {
                 return;
             }
             if (executionValue != -1) {
                 navigationTree.getParent();
-                //user.execute(executionValue);
+                user.execute(executionValue);
             }
 
             navigationTree.print();
