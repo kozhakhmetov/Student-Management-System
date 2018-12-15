@@ -1,46 +1,24 @@
 package Courses;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Transcript implements Cloneable, Serializable, Comparable {
+public class Transcript implements Serializable {
 
-    HashMap<String, Integer> marks = new HashMap<String,Integer>();
+    private List<String> courseId;
 
-    public HashMap<String, Integer> getMarks() {
-        return marks;
+    public Transcript() {
+        courseId = new ArrayList<>();
     }
 
-    public void setMarks(HashMap<String, Integer> marks) {
-        this.marks = marks;
+    public List<String> getCourseId() {
+        return courseId;
     }
 
-    @Override
-    public int compareTo(Object o) {
-        return 0;
+    public void setCourseId(List<String> courseId) {
+        this.courseId = courseId;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Transcript that = (Transcript) o;
-        return Objects.equals(marks, that.marks);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(marks);
-    }
-
-    @Override
-    public String toString() {
-        return "Transcript{" +
-                "marks=" + marks +
-                '}';
-    }
-
 
 }
 

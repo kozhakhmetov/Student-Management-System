@@ -24,6 +24,10 @@ abstract public class User implements Comparable, Serializable, Cloneable {
         log = new ArrayList<Log>();
     }
 
+    public static String hashPass(String password) {
+        return Objects.hash(password) + "";
+    }
+
     public void showLog() {
        for(Log log : this.log) {
            IO.print(log.toString());
@@ -89,7 +93,6 @@ abstract public class User implements Comparable, Serializable, Cloneable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public boolean setLogin() {
         IO.print(enterLogin);

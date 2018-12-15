@@ -3,13 +3,14 @@ package DataAndStatickClasses;
 
 import Users.*;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Scanner;
 
 public class Session implements Serializable, Cloneable, Comparable {
-    static final String mainPath = "/Users/mac/Projects/Student-Management-System/src/ActionTreeText"; // TODO change path
+    static final String mainPath = "src/ActionTreeText"; // TODO change path
 
-    static public void start(User user) {
+    static public void start(User user) throws IOException {
         String path = mainPath;
         if (user instanceof Admin) path += "/Admin";
         if (user instanceof Teacher) path += "/Teacher";
@@ -33,6 +34,7 @@ public class Session implements Serializable, Cloneable, Comparable {
             if (executionValue != -1) {
                 navigationTree.getParent();
                 user.execute(executionValue);
+                Data.saveData();
             }
 
             navigationTree.print();

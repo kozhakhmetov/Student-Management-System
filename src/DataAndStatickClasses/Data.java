@@ -145,6 +145,8 @@ public class Data implements Serializable, Cloneable {
     }
 
 
-
-
+    public static void addCourse(Course course) throws IOException {
+        courses.put(course.getCourseId(),course);
+        saveData();
+    }
 }

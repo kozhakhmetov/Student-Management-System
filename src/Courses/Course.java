@@ -1,10 +1,8 @@
 package Courses;
 
 import AdditionalClasses.IO;
-import DataAndStatickClasses.Data;
 import Users.Student;
 import Users.Teacher;
-import Users.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,66 +12,41 @@ import java.util.Objects;
 
 public class Course implements Cloneable, Comparable, Serializable {
 
-    static private final String enterLogin = "Enter the login of user";
-    static private final String wrongLogin = "User with such login does not exist";
-
-    CourseFile courseFile;
-    List<Student> students;
     Teacher teacher;
     String courseId;
     int numberOfCredits;
-    List<Mark> marks = new ArrayList<Mark>();
 
-    public Course(CourseFile courseFile, List<Student> students, Teacher teacher, String courseId, int numberOfCredits) {
-        this.courseFile = courseFile;
-        this.students = students;
+    public static HashMap<String, List<Integer>> marks;
+
+    public Course(Teacher teaacher, String courseId, int numberOfCredits) {
         this.teacher = teacher;
         this.courseId = courseId;
         this.numberOfCredits = numberOfCredits;
+        marks = new HashMap<>();
+    }
 
-        for(int i = 0; i < students.size();i ++) {
-
+    public void putMark(String studentID, int mark_) {
+        Integer mark = new Integer(mark_);
+        try {
+            marks.get(studentID).add(mark);
+        } catch(NullPointerException e) {
+            List<Integer> lm = new ArrayList<Integer>();
+            lm.add(mark);
+            marks.put(studentID,lm);
         }
     }
 
-    public void putMark(String login,Integer mark_) {
-        System.out.println(enterLogin);
-        login = IO.read();
-        if (login.equals("!")) return;
-        while (!Data.doesUserExist(login)) {
-            System.out.println(wrongLogin);
-            System.out.println(enterLogin);
-            login = IO.read();
-            if (login.equals("!")) return;
+    public void showMarks(Student student) {
+        IO.print(this.getCourseId() + "Marks: ");
+        try {
+            List<Integer> curMarks = marks.get(student.getLogin());
+            for(Integer curMark : curMarks) {
+                IO.print(String.valueOf(curMark.intValue()));
+            }
+        } catch (NullPointerException e) {
+            IO.print(e.getMessage());
         }
-        User user = Data.getUser(login);
-        if(!(user instanceof Student)) {
-            IO.print("User is not student");
-        } else {
-            Student student = (Student)user;
-            HashMap<String,Integer> hs = student.getTranscript().getMarks();
-            hs.put(courseId,mark_);
-        }
-    }
 
-    public CourseFile getCourseFile() {
-        return courseFile;
-    }
-
-    public void setCourseFile(CourseFile courseFile) {
-        this.courseFile = courseFile;
-    }
-
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
     }
 
     public void setTeacher(Teacher teacher) {
@@ -107,8 +80,6 @@ public class Course implements Cloneable, Comparable, Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Course course = (Course) o;
         return numberOfCredits == course.numberOfCredits &&
-                Objects.equals(courseFile, course.courseFile) &&
-                Objects.equals(students, course.students) &&
                 Objects.equals(teacher, course.teacher) &&
                 Objects.equals(courseId, course.courseId) &&
                 Objects.equals(marks, course.marks);
@@ -116,20 +87,18 @@ public class Course implements Cloneable, Comparable, Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(courseFile, students, teacher, courseId, numberOfCredits, marks);
+        return Objects.hash(teacher, courseId, numberOfCredits, marks);
     }
 
     @Override
     public String toString() {
         return "Course{" +
-                "courseFile=" + courseFile +
-                ", students=" + students +
+                "courseFile="  +
                 ", teacher=" + teacher +
                 ", courseId='" + courseId + '\'' +
                 ", numberOfCredits=" + numberOfCredits +
                 ", marks=" + marks +
                 '}';
     }
-
 
 }

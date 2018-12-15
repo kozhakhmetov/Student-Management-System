@@ -1,35 +1,27 @@
 package Users;
 
+import AdditionalClasses.Actions;
+import AdditionalClasses.IO;
 import AdditionalClasses.PersonData;
+import Courses.Course;
 import Courses.Transcript;
+import DataAndStatickClasses.Data;
 import Enums.Degree;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Student extends User {
 
     private Degree degree;
-
-    public Transcript getTranscript() {
-        return transcript;
-    }
-
-    public void setTranscript(Transcript transcript) {
-        this.transcript = transcript;
-    }
-
     private Transcript transcript;
     private PersonData personData;
     private double gpa;
-    private List<String> courses;
 
     public Student(PersonData personData) {
         super();
         this.personData = personData;
         this.degree = Degree.Bachelor;
-        courses = new ArrayList<String>();
+        transcript = new Transcript();
     }
 
     public Student() {
@@ -60,30 +52,55 @@ public class Student extends User {
         this.gpa = gpa;
     }
 
-    public List<String> getCourses() {
-        return courses;
+    public Transcript getTranscript() {
+        return transcript;
     }
 
-    public void setCourses(List<String> courses) {
-        this.courses = courses;
+    public void setTranscript(Transcript transcript) {
+        this.transcript = transcript;
     }
 
     @Override
     public void execute(int value) {
         Scanner scanner = new Scanner(System.in);
         if (value == 1) { // View courses
-            for(String curCourse : courses) {
-                System.out.println(curCourse);
-            }
+            showCourses();
         }
         if (value == 2) { // View transcript
-            // take information from Course, waiting for Adilkhan
+            showTranscript();
         }
-        if (value == 3) {
-
+        if (value == 3) { // register for a course
+            String courseId = Actions.getCourseId();
+            transcript.getCourseId().add(courseId);
         }
         if (value == 5) { // View file of course
-            // take information from Course, waiting for Adilkhan
+            showCourseFiles();
         }
     }
+
+    private void showCourseFiles() {
+
+    }
+
+    private void showCourses() {
+        try {
+            for (String courseName : transcript.getCourseId()) {
+                IO.print(courseName);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showTranscript() {
+        try {
+            for (String courseId : transcript.getCourseId()) {
+                Course course = Data.getCourse(courseId);
+                course.showMarks(this);
+            }
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

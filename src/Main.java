@@ -7,10 +7,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        Data.loadData();
-
-
-
+        Data.createAdmin();
+        Data.saveData();
+        //Data.loadData();
         while (true) {
             User user = signIn();
             Session.start(user);
